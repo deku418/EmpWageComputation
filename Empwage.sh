@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/bash 
 
 echo "Welcome to EmpWage Computation Problem"
 
@@ -9,22 +9,23 @@ workingDayPerMonth=20
 totalHr=0
 totalMaxHr=100
 totalworkingdays=0
-while [ $totalHr -le $totalMaxHr ]
-do
-	random=$((RANDOM%3))
-	case $random in
-		$Fulltime )
+
+function GetWorkingHours () {
+	for ((i=1;i<=workingDayPerMonth;i++))
+	do
+		random=$((RANDOM%3))
+		case $random in
+			$Fulltime )
 			empHrs=8
 		;;
-		$Parttime )
+			$Parttime )
    		empHrs=4
 		;;
 		* )
 			empHrs=0
-	esac
-		totalHr=$((totalHr+empHrs))
-		salary=$((empPerHrs*totalHr))
-		totalsalary=$((salary+totalsalary))
-done
-echo "Daily salary of Employee: $salary"
-echo "Salary of Employee for 100 hrs: $totalsalary"
+		esac
+			totalHr=$((totalHr+empHrs))
+	done
+}
+GetWorkingHours
+echo "Total Work Hour =$totalHr"
