@@ -2,14 +2,20 @@
 
 echo "Welcome to EmpWage Computation Problem"
 
-EmployeePresent=1
+Fulltime=1
+Parttime=2
 empPerHrs=20
-random=$((RANDOM%2))
-if [ $random -eq $EmployeePresent ]
+random=$((RANDOM%3))
+if [ $random -eq $Fulltime ]
 then
-	echo "Employee is Present"
+	echo "Employee is full time present"
 	empHrs=8
 	salary=$((empPerHrs*empHrs))
+	elif [ $random -eq $Parttime ]
+	then
+   echo "Employee is half time present"
+   empHrs=4
+   salary=$((empPerHrs*empHrs))
 else
 	echo "Employee is Absent"
 	salary=0
