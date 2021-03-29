@@ -10,7 +10,7 @@ totalHr=0
 totalMaxHr=100
 totalworkingdays=0
 
-declare -a ArrayforWage
+declare -A wages
 function GetWorkingHours () {
 	for ((i=1;i<=workingDayPerMonth;i++))
 	do
@@ -28,8 +28,9 @@ function GetWorkingHours () {
 			totalHr=$((totalHr+empHrs))
 			salary=$((empPerHrs*empHrs))
 			totalsalary=$((empPerHrs*totalHr))
-			ArrayforWage=( $salary $totalsalary )
+			wages[i]="$salary"
+			wages[totalsalary]="$totalsalary"
 	done
 }
 GetWorkingHours
-echo "ArrayforWage = ${ArrayforWage[@]}"
+echo "Daily Wage: ${wages[@]}"
